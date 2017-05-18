@@ -21,6 +21,8 @@ The following features are included:
  * Sales/Site analytics
  * Client account system
 
+The UX/UI uses proper motion/animation techniques. It is built on top of the Twitter Bootstrap framework (Sass/SCSS), and leverages the power of Angular for the front-end logic.
+
 
 ## How do I work with this?
 
@@ -32,15 +34,65 @@ Before provisioning this Vagrant box
 
 **EDIT THE DEFAULT MONGODB USER AND PASSWORD in `vmscripts/vm.setup.server.sh`**
 
-This Vagrant box runs on your machine at [192.168.33.11](192.168.33.11). 
+This Vagrant box runs on your machine at [192.168.33.11](192.168.33.11)
 
 Append an entry to your `/etc/hosts` file to give it a local domain name:
 
 ```
-192.168.33.11    local.your-site.com
+192.168.33.11    local.cornerstone.com
 ```
 
-Change `local.your-site.com` to whatever URL you want locally.
+Change `local.cornerstone.com` to whatever URL you want locally.
+
+Now, open up a shell, navigate to the `cornerstone/` directory, and run:
+
+```
+vagrant up
+```
+
+The first time you run this command, the Vagrant provision will download and configure all necessary components into one self-contained Virtual Machine (VM).
+
+To shutdown your provisioned VM, issue the following command:
+
+```
+vagrant halt
+```
+
+To start it back up, just issue the `vagrant up` command again.
+
+To see the status of your VM, issue the `vagrant status` command.
+
+### Run the back-end
+
+Open up a shell terminal, navigate to the `cornerstone/` directory, and run:
+
+```
+vagrant ssh
+```
+
+Then change directories to `/home/ubuntu/app/cornerstone-backend` and run:
+
+```
+node .
+```
+
+The back-end server is now available at [local.cornerstone.com:3000](local.cornerstone.com:3000)
+
+### Run the front-end
+
+Open up another shell terminal, navigate to the `cornerstone/` directory, and run:
+
+```
+vagrant ssh
+```
+
+Then change directories to `/home/ubuntu/app/cornerstone-frontend` and run:
+
+```
+ng serve
+```
+
+The front-end is now available at [local.cornerstone.com:4200](local.cornerstone.com:4200)
 
 ### Modify features
 

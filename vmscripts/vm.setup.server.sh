@@ -26,8 +26,8 @@ ExecStart=/usr/bin/mongod --quiet --config /etc/mongod.conf
 WantedBy=multi-user.target" | tee /etc/systemd/system/mongodb.service
     sudo systemctl start mongodb
     sudo systemctl enable mongodb
-    cd /home/ubuntu/app/cornerstone-backend
-    mongo admin --eval "var MONGODB_USER='$MONGODB_USER', MONGODB_PASSWORD='$MONGODB_PASSWORD'" mongo_setup.js
+    cd /home/ubuntu/app/cornerstone-backend/setup/
+    mongo admin --eval "var MONGODB_USER='$MONGODB_USER', MONGODB_PASSWORD='$MONGODB_PASSWORD'" users.mongo.js
     sudo sed -i 's@ExecStart=/usr/bin/mongod --quiet --config /etc/mongod.conf@ExecStart=/usr/bin/mongod --quiet --auth --config /etc/mongod.conf@g' /lib/systemd/system/mongod.service
     sudo systemctl daemon-reload
     sudo systemctl restart mongodb
