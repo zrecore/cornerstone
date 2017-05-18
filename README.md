@@ -89,10 +89,16 @@ vagrant ssh
 Then change directories to `/home/ubuntu/app/cornerstone-frontend` and run:
 
 ```
-ng serve
+npm start
 ```
 
 The front-end is now available at [local.cornerstone.com:4200](local.cornerstone.com:4200)
+
+To build the front-end into a distributable set of files, run the following command instead:
+
+```
+npm build
+```
 
 ### Modify features
 

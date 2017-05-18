@@ -30,7 +30,7 @@ Vagrant.configure("2") do |config|
   # config.vm.network "forwarded_port", guest: 80, host: 8080
   config.vm.network "forwarded_port", guest: 27017, host: 27017
   config.vm.network "forwarded_port", guest: 8701, host: 8701 # Strongloop Loopback REST API Explorer
-  config.vm.network "forwarded_port", guest: 8080, host: 8080 # Change to port 80 on production (Front-End)
+  config.vm.network "forwarded_port", guest: 4200, host: 4200 # Change to port 80 on production (Front-End)
   # config.vm.network "forwarded_port", guest: 443, host: 443 # Enable on production
   config.vm.network "forwarded_port", guest: 3000, host: 3000 # Strongloop Loopback REST Server
   config.vm.network "forwarded_port", guest: 49152, host: 49152
