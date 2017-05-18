@@ -11,6 +11,7 @@ apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
     cd /home/ubuntu
     curl -sL https://deb.nodesource.com/setup_6.x -o nodesource_setup.sh
     bash nodesource_setup.sh
+    rm -f nodesource_setup.sh
     chown -R ubuntu:ubuntu /usr/local
     apt-get install -y nodejs build-essential python2.7 mongodb-org
     echo "[Unit]
