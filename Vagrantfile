@@ -78,7 +78,7 @@ Vagrant.configure("2") do |config|
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
 
-  # EDIT THIS FILE! It contains your mongoDB credentials!
+  # EDIT THE app/cornerstone-backend/setup/config.sh FILE! It contains your mongoDB credentials!
   #############################################
   #### DO NOT LEAVE password as 'password' ####
   #############################################

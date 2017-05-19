@@ -32,7 +32,7 @@ You will need to install Virtualbox and Vagrant on your machine.
 
 Before provisioning this Vagrant box
 
-**EDIT THE DEFAULT MONGODB USER AND PASSWORD in `vmscripts/vm.setup.server.sh`**
+**EDIT THE DEFAULT MONGODB USER AND PASSWORD in `app/cornerstone-backend/setup/config.sh`**
 
 This Vagrant box runs on your machine at [192.168.33.11](192.168.33.11)
 
