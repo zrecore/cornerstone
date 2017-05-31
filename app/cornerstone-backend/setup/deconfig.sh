@@ -1,9 +1,16 @@
-# Removes these values from the environment
+# Removes these environment variables
 # --- CREDENTIALS BEGIN ---
-
-export MONGODB_PASSWORD=""
+MONGODB_USER=""
+MONGODB_PASSWORD=""
 # --- CREDENTIALS_END   ---
 
 # --- CONFIG BEGIN ---\
-
+CORNERSTONE_WEBSITE_URL=""
+CORNERSTONE_WEBSITE_NAME=""
 # --- CONFIG END
+
+
+export MONGODB_USER
+export MONGODB_PASSWORD
+export CORNERSTONE_WEBSITE_URL
+export CORNERSTONE_WEBSITE_NAME

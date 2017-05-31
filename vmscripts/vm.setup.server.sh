@@ -1,4 +1,4 @@
-sh /home/ubuntu/app/cornerstone-backend/setup/config.sh
+source /home/ubuntu/app/cornerstone-backend/setup/config.sh
 
 apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
     echo "deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list
@@ -27,4 +27,4 @@ WantedBy=multi-user.target" | tee /etc/systemd/system/mongodb.service
     sudo systemctl daemon-reload
     sudo systemctl restart mongodb
 
-sh /home/ubuntu/app/cornerstone-backend/setup/deconfig.sh
+source /home/ubuntu/app/cornerstone-backend/setup/deconfig.sh
