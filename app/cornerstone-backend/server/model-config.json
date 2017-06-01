@@ -14,25 +14,193 @@
     ]
   },
   "User": {
-    "dataSource": "db"
+    "dataSource": "cornerstone"
   },
   "AccessToken": {
-    "dataSource": "db",
+    "dataSource": "cornerstone",
     "public": false
   },
   "ACL": {
-    "dataSource": "db",
+    "dataSource": "cornerstone",
     "public": false
   },
   "RoleMapping": {
-    "dataSource": "db",
-    "public": false,
-    "options": {
-      "strictObjectIDCoercion": true
-    }
+    "dataSource": "cornerstone",
+    "public": false
   },
   "Role": {
-    "dataSource": "db",
+    "dataSource": "cornerstone",
     "public": false
+  },
+
+
+
+
+
+  "Item": {
+    "dataSource": "cornerstone",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "Currency": {
+    "dataSource": "cornerstone",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "Category": {
+    "dataSource": "cornerstone",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "Page": {
+    "dataSource": "cornerstone",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "Author": {
+    "dataSource": "cornerstone",
+    "public": true
+  },
+  "Coupon": {
+    "dataSource": "cornerstone",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "ItemCoupon": {
+    "dataSource": "cornerstone",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "Property": {
+    "dataSource": "cornerstone",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "PropertyType": {
+    "dataSource": "cornerstone",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "PropertyValue": {
+    "dataSource": "cornerstone",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "ItemProperty": {
+    "dataSource": "cornerstone",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "MerchantGateway": {
+    "dataSource": "cornerstone",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "Notify": {
+    "dataSource": "cornerstone",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "Order": {
+    "dataSource": "cornerstone",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "Status": {
+    "dataSource": "cornerstone",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "OrderStatus": {
+    "dataSource": "cornerstone",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "OrderCoupon": {
+    "dataSource": "cornerstone",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "OrderItem": {
+    "dataSource": "cornerstone",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "PackageLevel": {
+    "dataSource": "cornerstone",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "Service": {
+    "dataSource": "cornerstone",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "ServiceCoupon": {
+    "dataSource": "cornerstone",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "ServicePackageLevel": {
+    "dataSource": "cornerstone",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "OrderService": {
+    "dataSource": "cornerstone",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "Subscription": {
+    "dataSource": "db",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "SubscriptionCoupon": {
+    "dataSource": "cornerstone",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "SubscriptionPackageLevel": {
+    "dataSource": "cornerstone",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "SubscriptionService": {
+    "dataSource": "cornerstone",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "OrderSubscription": {
+    "dataSource": "cornerstone",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
   }
 }

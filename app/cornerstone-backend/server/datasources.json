@@ -2,5 +2,10 @@
   "db": {
     "name": "db",
     "connector": "memory"
+  },
+  "cornerstone": {
+    "database": "cornerstone",
+    "name": "cornerstone",
+    "connector": "mongodb"
   }
 }
