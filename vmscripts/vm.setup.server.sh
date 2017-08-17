@@ -4,11 +4,14 @@ apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
     echo "deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list
     apt-get update
     cd /home/ubuntu
-    curl -sL https://deb.nodesource.com/setup_6.x -o nodesource_setup.sh
+    curl -sL https://deb.nodesource.com/setup_7.x -o nodesource_setup.sh
     bash nodesource_setup.sh
     rm -f nodesource_setup.sh
     chown -R ubuntu:ubuntu /usr/local
-    apt-get install -y nodejs build-essential python2.7 mongodb-org
+    apt-get install -y build-essential python2.7 screen
+    ln -s /usr/bin/python2.7 /usr/bin/python
+    export PYTHON=/usr/bin/python2.7
+    apt-get install -y nodejs mongodb-org software-properties-common
     echo "[Unit]
 Description=High-performance, schema-free document-oriented database
 After=network.target

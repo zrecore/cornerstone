@@ -5,7 +5,7 @@ MONGODB_PASSWORD="password"
 # --- CREDENTIALS_END   ---
 
 # --- CONFIG BEGIN ---\
-CORNERSTONE_WEBSITE_URL="local.cornerstone.com"
+CORNERSTONE_WEBSITE_URL="local-cornerstone.com"
 CORNERSTONE_WEBSITE_NAME="Cornerstone App"
 CORNERSTONE_EMAIL="you@example.com"
 # --- CONFIG END

@@ -26,6 +26,8 @@ The UX/UI uses proper motion/animation techniques. It is built on top of the Twi
 
 ## How do I work with this?
 
+Copy `app/cornerstone-backend/setup/sample.config.sh` as `app/cornerstone-backend/setup/config.sh`, and edit the `config.sh` file with your own values.
+
 ### Run this Vagrant provision
 
 You will need to install Virtualbox and Vagrant on your machine.
@@ -34,15 +36,15 @@ Before provisioning this Vagrant box
 
 **EDIT THE DEFAULT MONGODB USER AND PASSWORD in `app/cornerstone-backend/setup/config.sh`**
 
-This Vagrant box runs on your machine at [192.168.33.11](192.168.33.11)
+This Vagrant box runs on your machine at [192.168.33.10](192.168.33.10)
 
 Append an entry to your `/etc/hosts` file to give it a local domain name:
 
 ```
-192.168.33.11    local.cornerstone.com
+192.168.33.11    local-cornerstone.com
 ```
 
-Change `local.cornerstone.com` to whatever URL you want locally.
+Change `local-cornerstone.com` to whatever URL you want locally.
 
 Now, open up a shell, navigate to the `cornerstone/` directory, and run:
 
@@ -76,7 +78,7 @@ Then change directories to `/home/ubuntu/app/cornerstone-backend` and run:
 node .
 ```
 
-The back-end server is now available at [local.cornerstone.com:3000](local.cornerstone.com:3000)
+The back-end server is now available at [local-cornerstone.com:3000](local-cornerstone.com:3000)
 
 ### Run the front-end
 
@@ -86,13 +88,13 @@ Open up another shell terminal, navigate to the `cornerstone/` directory, and ru
 vagrant ssh
 ```
 
-Then change directories to `/home/ubuntu/app/cornerstone-frontend` and run:
+Then change directories to `/home/ubuntu/app/cornerstone-ui` and run:
 
 ```
 npm start
 ```
 
-The front-end is now available at [local.cornerstone.com:4200](local.cornerstone.com:4200)
+The front-end is now available at [local-cornerstone.com:4000](local-cornerstone.com:4000)
 
 To build the front-end into a distributable set of files, run the following command instead:
 
