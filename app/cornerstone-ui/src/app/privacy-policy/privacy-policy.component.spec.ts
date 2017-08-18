@@ -1,18 +1,18 @@
 import { TestBed, async } from '@angular/core/testing';
 
-import { AppComponent } from './app.component';
+import { PrivacyPolicyComponent } from './privacy-policy.component';
 
-describe('AppComponent', () => {
+describe('PrivacyPolicyComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent
+        PrivacyPolicyComponent
       ],
     }).compileComponents();
   }));
 
-  it('should create the app', async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
+  it('should create the privacy policy component', async(() => {
+    const fixture = TestBed.createComponent(PrivacyPolicyComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   }));

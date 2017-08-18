@@ -1,14 +1,14 @@
-import { CornerstoneFrontendPage } from './app.po';
+import { AppPage } from './app.po';
 
-describe('cornerstone-frontend App', () => {
-  let page: CornerstoneFrontendPage;
+describe('cornerstone-ui App', () => {
+  let page: AppPage;
 
   beforeEach(() => {
-    page = new CornerstoneFrontendPage();
+    page = new AppPage();
   });
 
-  it('should display message saying app works', () => {
+  it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('app works!');
+    expect(page.getParagraphText()).toEqual('Welcome to app!');
   });
 });

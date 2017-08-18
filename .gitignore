@@ -57,6 +57,11 @@ typings/
 # dotenv environment variables file
 .env
 
+# Angular CLI server-side stuff
+*.ngfactory.*
+*.ngsummary.*
+*.ngstyle.*
+
 # Vagrant stuff
 acceptance_config.yml
 boxes/*
@@ -64,7 +69,3 @@ boxes/*
 /website/.vagrant
 /website/build
 /vagrant-spec.config.rb
-
-
-# app specific stuff
-app/cornerstone-backend/setup/config.sh
