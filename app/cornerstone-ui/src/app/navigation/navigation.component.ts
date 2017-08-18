@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./navigation.component.scss']
 })
 export class NavigationComponent {
-  title = 'MacDaddy - Mac and PC';
+  title = 'Cornerstone';
 }
