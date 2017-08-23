@@ -5,7 +5,7 @@ echo "$CORNERSTONE_WEBSITE_URL" > /etc/hostname
 hostname -F /etc/hostname
 ip=$(ip addr show eth0 | grep -Po 'inet \K[\d.]+')
 echo "$ip    $ip hostname" >> /etc/hosts
-ln -sf /usr/share/zoneinfo/PST /etc/localtime
+ln -sf "/usr/share/zoneinfo/$CORNERSTONE_TIMEZONE" /etc/localtime
 
 apt-get install -y nginx
 

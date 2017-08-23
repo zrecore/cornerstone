@@ -1,0 +1,28 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "cornerstone": {
+    "database": "cornerstone",
+    "name": "cornerstone",
+    "connector": "mongodb"
+  },
+  "GMail": {
+    "name": "GMail",
+    "connector": "mail",
+    "transports": [{
+      "type": "smtp",
+      "host": "smtp.gmail.com",
+      "secure": false,
+      "port": 587,
+      "tls": {
+        "rejectUnauthorized": false
+      },
+      "auth": {
+        "user": "CORNERSTONE_EMAIL",
+        "pass": "CORNERSTONE_EMAIL_PASSWORD"
+      }
+    }]
+  }
+}

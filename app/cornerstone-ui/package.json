@@ -9,7 +9,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "prestart": "ng build --prod && ngc",
-    "start": "ts-node src/server.ts"
+    "start": "ts-node src/server.ts",
+    "serve": "ng serve --watch --live-reload --host 0.0.0.0 --port 4200 --disable-host-check --poll"
   },
   "private": true,
   "dependencies": {

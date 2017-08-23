@@ -32,11 +32,6 @@
     "dataSource": "cornerstone",
     "public": false
   },
-
-
-
-
-
   "Item": {
     "dataSource": "cornerstone",
     "public": true,

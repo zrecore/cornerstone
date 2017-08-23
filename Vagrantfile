@@ -97,7 +97,9 @@ Vagrant.configure("2") do |config|
     # Setup Linode provision
     t.vm.provision "shell", path: "vmscripts/vm.setup.linode.sh"
     
-    #config.vm.provision "shell", path: "vmscripts/vm.setup.strongloop-pm.sh" # Run this on production for the strongloop-pm service
+    # Setup StrongLoop backend
+    t.vm.provision "shell", path: "vmscripts/vm.setup.strongloop.sh", privileged: false
+    t.vm.provision "shell", path: "vmscripts/vm.setup.strongloop-pm.sh" # Run this on production for the strongloop-pm service
   end
 
   config.vm.define :cornerstonelocal do |local|
@@ -175,6 +177,8 @@ Vagrant.configure("2") do |config|
     local.vm.provision "shell", path: "vmscripts/vm.setup.server.sh"
     # Non-priviledged user, installs node packages.
     local.vm.provision "shell", path: "vmscripts/vm.setup.mean-stack.sh", privileged: false
+    # Setup StrongLoop backend
+    local.vm.provision "shell", path: "vmscripts/vm.setup.strongloop.sh", privileged: false
     
   end
 end
