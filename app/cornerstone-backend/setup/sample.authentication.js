@@ -9,7 +9,8 @@ module.exports = function enableAuthentication(server) {
         "realm": "",
         "username": "CORNERSTONE_ADMIN_USER",
         "email": "CORNERSTONE_EMAIL",
-        "password": "CORNERSTONE_ADMIN_PASSWORD"
+        "password": "CORNERSTONE_ADMIN_PASSWORD",
+        "verified": true
     }], function (er, users) {
         if (er) throw er;
 

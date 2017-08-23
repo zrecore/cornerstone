@@ -24,6 +24,9 @@
     "dataSource": "cornerstone",
     "public": false
   },
+  "Email": {
+    "dataSource": "gmail"
+  },
   "RoleMapping": {
     "dataSource": "cornerstone",
     "public": false

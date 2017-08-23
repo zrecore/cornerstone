@@ -8,14 +8,14 @@
     "name": "cornerstone",
     "connector": "mongodb"
   },
-  "GMail": {
-    "name": "GMail",
+  "gmail": {
+    "name": "gmail",
     "connector": "mail",
     "transports": [{
       "type": "smtp",
       "host": "smtp.gmail.com",
-      "secure": false,
-      "port": 587,
+      "secure": true,
+      "port": 465,
       "tls": {
         "rejectUnauthorized": false
       },
