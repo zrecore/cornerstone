@@ -9,6 +9,7 @@ module.exports = function(Author) {
             "to": author.email,
             "subject": cornerstone.website_name + "Thank you for registering!",
             "template": path.resolve(__dirname, '../../server/views/verify.ejs'),
+            "verifyHref": cornerstone.website_url + '/verify',
             "user": author
         };//,
         // mail = Author.app.datasources['gmail'];
