@@ -5,8 +5,8 @@ MONGODB_PASSWORD="password"
 # --- CREDENTIALS_END   ---
 
 # --- CONFIG BEGIN ---\
-CORNERSTONE_WEBSITE_URL="local-cornerstone.com"
-CORNERSTONE_API_URL="api.local-cornerstone.com"
+CORNERSTONE_WEBSITE_URL="local.cornerstone.com"
+CORNERSTONE_API_URL="api-local.cornerstone.com"
 CORNERSTONE_WEBSITE_NAME="Cornerstone App"
 CORNERSTONE_EMAIL="you@example.com"
 CORNERSTONE_EMAIL_PASSWORD="change_password_123"

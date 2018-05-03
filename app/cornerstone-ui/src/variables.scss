@@ -1,6 +1,20 @@
-$font-palanquin: 'Palanquin', sans;
-$font-raleway: 'Raleway', sans;
-$font-roboto: 'Roboto', sans;
+@import "/../node_modules/bootstrap/scss/_functions.scss";
+@import "/../node_modules/bootstrap/scss/_variables.scss";
+
+$font-palanquin: 'Palanquin', sans-serif;
+$font-raleway: 'Raleway', sans-serif;
+$font-roboto: 'Roboto', sans-serif;
 
 $body-font: $font-raleway;
 $header-font: $font-palanquin;
+
+
+/** Your Stuff BOF **/
+
+/** Your Stuff EOF **/
+
+
+
+
+
+@import "/../node_modules/bootstrap/scss/bootstrap.scss";

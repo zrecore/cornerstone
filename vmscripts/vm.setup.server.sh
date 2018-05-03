@@ -2,7 +2,7 @@ source ~/app/cornerstone-backend/setup/config.sh
 
 apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
     # echo "deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list
-    sudo bash -c 'printf "deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse" |  | sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list'
+    sudo bash -c 'printf "deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list'
     sudo apt-get update
     cd ~
     sudo apt-get install -y build-essential python2.7 screen

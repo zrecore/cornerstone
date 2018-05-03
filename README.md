@@ -2,7 +2,7 @@
 Cor·ner·stone /ˈkôrnərˌstōn/, noun - an important quality or feature on which a particular thing depends or is based.
 
 
-## Build shops faster
+## Build web applications faster
 
 This is a web application starter project.
 
@@ -10,19 +10,7 @@ Build a MEAN stack web application quickly. Includes the following:
 
  * Strongloop, Loopback (REST API back-end, shared data models)
  * MySQL (Database)
- * Angular2, Twitter Bootstrap (Front-end)
-
-The following features are included:
-
- * eCommerce shop
- * Subscriptions, Service system
- * Payment Gateway integration - PayPal, Stripe, Recurly
- * CMS (Content Management System) - Includes micro formatting, SEO, and Social Engagement features.
- * Sales/Site analytics
- * Client account system
-
-The UX/UI uses proper motion/animation techniques. It is built on top of the Twitter Bootstrap framework (Sass/SCSS), and leverages the power of Angular for the front-end logic.
-
+ * Angular5, Twitter Bootstrap (Front-end)
 
 ## How do I work with this?
 
@@ -31,6 +19,12 @@ Copy `app/cornerstone-backend/setup/sample.config.sh` as `app/cornerstone-backen
 ### Run this Vagrant provision
 
 You will need to install Virtualbox and Vagrant on your machine.
+
+Please install the following vagrant plug-ins:
+
+ * vagrant-fsnotify - forwards file system change events to the VM.
+ * vagrant-linode - for Linode deployment (See Vagrantfile!)
+ * vagrant-vbguest - Keeps the VM guest additions up to date on your VM boxes.
 
 Before provisioning this Vagrant box
 
@@ -41,10 +35,10 @@ This Vagrant box runs on your machine at [192.168.33.10](192.168.33.10)
 Append an entry to your `/etc/hosts` file to give it a local domain name:
 
 ```
-192.168.33.11    local-cornerstone.com
+192.168.33.11    local.cornerstone.com
 ```
 
-Change `local-cornerstone.com` to whatever URL you want locally.
+Change `local.cornerstone.com` to whatever URL you want locally.
 
 Now, open up a shell, navigate to the `cornerstone/` directory, and run:
 
@@ -78,7 +72,7 @@ Then change directories to `/home/ubuntu/app/cornerstone-backend` and run:
 node .
 ```
 
-The back-end server is now available at [local-cornerstone.com:3000](local-cornerstone.com:3000)
+The back-end server is now available at [local.cornerstone.com:3000](local.cornerstone.com:3000)
 
 ### Run the front-end
 
@@ -94,20 +88,10 @@ Then change directories to `/home/ubuntu/app/cornerstone-ui` and run:
 npm start
 ```
 
-The front-end is now available at [local-cornerstone.com:4000](local-cornerstone.com:4000)
+The front-end is now available at [local.cornerstone.com:4000](local.cornerstone.com:4200)
 
 To build the front-end into a distributable set of files, run the following command instead:
 
 ```
 npm build
 ```
-
-### Modify features
-
-
-Updates to the core are made via push requests and releases (github). 
-DO NOT modify the core directly, as changes will be overwritten by future updates!
-
-
-Instead, include your own module with appropriate event hooks. This allows you to override or supplement the default behaviours of your web application.
-

@@ -52,7 +52,7 @@ Vagrant.configure("2") do |config|
     # the path on the guest to mount the folder. And the optional third
     # argument is a set of non-required options.
     # config.vm.synced_folder "../data", "/vagrant_data"
-    t.vm.synced_folder "./app", "/home/ubuntu/app"
+    t.vm.synced_folder "./app", "/home/vagrant/app", exclude: ["cornerstone-backend/node_modules", "cornerstone-ui/node_modules", "cornerstone-ui/dist"]
     t.vm.synced_folder ".", "/vagrant", disabled: true
 
     # Provider-specific configuration so you can fine-tune various
@@ -91,6 +91,7 @@ Vagrant.configure("2") do |config|
     # Priviledged user, adds/installs LetsEncrypt certbot package (SSL certificate installer/updater)
     t.vm.provision "shell", path: "vmscripts/vm.install.letsencryptssl.sh", privileged: false
     # Non-priviledged user, installs node packages.
+    t.vm.provision "shell", path: "vmscripts/vm.setup.node.sh", privileged: false
     t.vm.provision "shell", path: "vmscripts/vm.setup.mean-stack.sh", privileged: false
     # Non-priviledged user, installs LetsEncrypt SSL cert installer.
     t.vm.provision "shell", path: "vmscripts/vm.setup.letsencryptssl.sh", privileged: false
@@ -143,7 +144,7 @@ Vagrant.configure("2") do |config|
     # the path on the guest to mount the folder. And the optional third
     # argument is a set of non-required options.
     # config.vm.synced_folder "../data", "/vagrant_data"
-    local.vm.synced_folder "./app", "/home/ubuntu/app"
+    local.vm.synced_folder "./app", "/home/vagrant/app", fsnotify: true, exclude: ["cornerstone-backend/node_modules", "cornerstone-ui/node_modules", "cornerstone-ui/dist"]
     local.vm.synced_folder ".", "/vagrant", disabled: true
 
     # Provider-specific configuration so you can fine-tune various

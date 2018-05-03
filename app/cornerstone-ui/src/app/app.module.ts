@@ -1,43 +1,64 @@
+// Angular Core
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { BrowserCookiesModule } from '@ngx-utils/cookies/browser';
 import { RouterModule, Routes } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
+import { environment } from '../environments/environment';
+
+// Controllers
+import { IndexComponent } from './controller/index/index.component';
+import { TermsAndConditionsComponent } from './controller/terms-and-conditions/terms-and-conditions.component';
+import { PrivacyPolicyComponent } from './controller/privacy-policy/privacy-policy.component';
+
+// Ui
+import { NavigationComponent } from './ui/navigation/navigation.component';
+import { FooterComponent } from './ui/footer/footer.component';
+
+// App
 import { AppComponent } from './app.component';
 
-import { NavigationComponent } from './navigation/navigation.component';
-import { FooterComponent } from './footer/footer.component';
-
-import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
-import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-conditions.component';
-import { IndexComponent } from './index/index.component';
-
 const appRoutes: Routes = [
-  { path: 'privacy-policy', component: PrivacyPolicyComponent },
-  { path: 'terms-and-conditions', component: TermsAndConditionsComponent },
-  { path: '',               component: IndexComponent }
+  { path: 'privacy', component: PrivacyPolicyComponent },
+  { path: 'terms', component: TermsAndConditionsComponent },
+  
+  { path: '', component: IndexComponent }
+  // { path: '**', component: PageNotFoundComponent }
 ];
 
+const rootRouting: ModuleWithProviders = RouterModule.forRoot(appRoutes,
+      { useHash: false, enableTracing: environment.production ? false : true }); // Set enableTracing to true for Debug only!
+
+
 @NgModule({
+  providers: [
+    // Services
+    
+  ],
   declarations: [
-    PrivacyPolicyComponent,
-    TermsAndConditionsComponent,
-    IndexComponent,
+    // App
     AppComponent,
+    
+    // Controllers
+    IndexComponent,
+    TermsAndConditionsComponent,
+    PrivacyPolicyComponent,
+
+    // UI
     NavigationComponent,
     FooterComponent
   ],
   imports: [
-    RouterModule.forRoot(
-      appRoutes,
-      { enableTracing: false } // <-- true = Debug only!
-    ),
-    BrowserModule.withServerTransition({appId: 'cornerstone-ui'}),
+    // Angular Core
+    BrowserModule.withServerTransition({ appId: 'cornerstone-ui'}),
+    BrowserCookiesModule.forRoot(),
+    rootRouting,
     FormsModule,
     HttpModule
+    
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
