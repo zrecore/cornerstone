@@ -1,4 +1,4 @@
 #!/bin/bash
-add-apt-repository -y ppa:certbot/certbot
-apt-get update
-apt-get install -y certbot
+sudo add-apt-repository -y ppa:certbot/certbot
+sudo apt-get update
+sudo apt-get install -y certbot

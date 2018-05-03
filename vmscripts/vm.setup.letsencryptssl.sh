@@ -1,5 +1,5 @@
 #!/bin/bash
-source /home/ubuntu/app/cornerstone-backend/setup/config.sh
+source ~/app/cornerstone-backend/setup/config.sh
 
 sudo certbot certonly --standalone --email "$CORNERSTONE_EMAIL" --agree-tos --webroot-path="/home/ubuntu/app/cornerstone-ui/dist/" -d "$CORNERSTONE_URL" -d "www.$CORNERSTONE_URL"
 sudo openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
@@ -21,4 +21,4 @@ if [[ $? -eq 0 ]] ;
 fi
 
 
-source /home/ubuntu/app/cornerstone-backend/setup/deconfig.sh
+source ~/app/cornerstone-backend/setup/deconfig.sh

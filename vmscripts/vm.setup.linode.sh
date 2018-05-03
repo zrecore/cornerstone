@@ -1,23 +1,21 @@
 #!/bin/bash
-source /home/ubuntu/app/cornerstone-backend/setup/config.sh
+source ~/app/cornerstone-backend/setup/config.sh
 
-echo "$CORNERSTONE_WEBSITE_URL" > /etc/hostname
-hostname -F /etc/hostname
+sudo bash -c 'printf "$CORNERSTONE_WEBSITE_URL" > /etc/hostname'
+sudo hostname -F /etc/hostname
 ip=$(ip addr show eth0 | grep -Po 'inet \K[\d.]+')
-echo "$ip    $ip hostname" >> /etc/hosts
-ln -sf "/usr/share/zoneinfo/$CORNERSTONE_TIMEZONE" /etc/localtime
+# echo "$ip    $ip hostname" >> /etc/hosts
+sudo bash -c 'echo "$ip    $ip hostname" >> /etc/hosts'
+sudo ln -sf /usr/share/zoneinfo/PST /etc/localtime
 
-apt-get install -y nginx
+sudo apt-get install -y nginx
 
-rm /etc/nginx/sites-enabled/default
-cp /home/ubuntu/app/cornerstone-backend/setup/host.nginx.conf "/etc/nginx/sites-available/$CORNERSTONE_WEBSITE_URL"
-sed -i "s@CORNERSTONE_WEBSITE_URL@$CORNERSTONE_WEBSITE_URL@g" "/etc/nginx/sites-available/$CORNERSTONE_WEBSITE_URL"
-ln -s "/etc/nginx/sites-available/$CORNERSTONE_WEBSITE_URL" "/etc/nginx/sites-enabled/"
-sed -i "s@# server_names_hash_bucket_size 64;@server_names_hash_bucket_size 64;@g" /etc/nginx/nginx.conf
-nginx -t
-systemctl restart nginx
+sudo rm /etc/nginx/sites-enabled/default
+sudo cp ~/app/cornerstone-backend/setup/host.nginx.conf "/etc/nginx/sites-available/$CORNERSTONE_WEBSITE_URL"
+sudo sed -i "s@CORNERSTONE_WEBSITE_URL@$CORNERSTONE_WEBSITE_URL@g" "/etc/nginx/sites-available/$CORNERSTONE_WEBSITE_URL"
+sudo ln -s "/etc/nginx/sites-available/$CORNERSTONE_WEBSITE_URL" "/etc/nginx/sites-enabled/"
+sudo sed -i "s@# server_names_hash_bucket_size 64;@server_names_hash_bucket_size 64;@g" /etc/nginx/nginx.conf
+sudo nginx -t
+sudo systemctl restart nginx
 
-cd /home/ubuntu/app/cornerstone-ui
-ng build --prod
-
-source /home/ubuntu/app/cornerstone-backend/setup/deconfig.sh
+source ~/app/cornerstone-backend/setup/deconfig.sh

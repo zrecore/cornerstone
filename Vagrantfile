@@ -53,6 +53,7 @@ Vagrant.configure("2") do |config|
     # argument is a set of non-required options.
     # config.vm.synced_folder "../data", "/vagrant_data"
     t.vm.synced_folder "./app", "/home/ubuntu/app"
+    t.vm.synced_folder ".", "/vagrant", disabled: true
 
     # Provider-specific configuration so you can fine-tune various
     # backing providers for Vagrant. These expose provider-specific options.
@@ -86,20 +87,20 @@ Vagrant.configure("2") do |config|
     #############################################
 
     # Priviledged user, Setup the server packages
-    t.vm.provision "shell", path: "vmscripts/vm.setup.server.sh"
+    t.vm.provision "shell", path: "vmscripts/vm.setup.server.sh", privileged: false
     # Priviledged user, adds/installs LetsEncrypt certbot package (SSL certificate installer/updater)
-    t.vm.provision "shell", path: "vmscripts/vm.install.letsencryptssl.sh"
+    t.vm.provision "shell", path: "vmscripts/vm.install.letsencryptssl.sh", privileged: false
     # Non-priviledged user, installs node packages.
     t.vm.provision "shell", path: "vmscripts/vm.setup.mean-stack.sh", privileged: false
     # Non-priviledged user, installs LetsEncrypt SSL cert installer.
     t.vm.provision "shell", path: "vmscripts/vm.setup.letsencryptssl.sh", privileged: false
 
     # Setup Linode provision
-    t.vm.provision "shell", path: "vmscripts/vm.setup.linode.sh"
+    t.vm.provision "shell", path: "vmscripts/vm.setup.linode.sh", privileged: false
     
     # Setup StrongLoop backend
     t.vm.provision "shell", path: "vmscripts/vm.setup.strongloop.sh", privileged: false
-    t.vm.provision "shell", path: "vmscripts/vm.setup.strongloop-pm.sh" # Run this on production for the strongloop-pm service
+    t.vm.provision "shell", path: "vmscripts/vm.setup.strongloop-pm.sh", privileged: false # Run this on production for the strongloop-pm service
   end
 
   config.vm.define :cornerstonelocal do |local|
@@ -143,6 +144,7 @@ Vagrant.configure("2") do |config|
     # argument is a set of non-required options.
     # config.vm.synced_folder "../data", "/vagrant_data"
     local.vm.synced_folder "./app", "/home/ubuntu/app"
+    local.vm.synced_folder ".", "/vagrant", disabled: true
 
     # Provider-specific configuration so you can fine-tune various
     # backing providers for Vagrant. These expose provider-specific options.
@@ -174,8 +176,9 @@ Vagrant.configure("2") do |config|
     #############################################
     #### DO NOT LEAVE password as 'password' ####
     #############################################
-    local.vm.provision "shell", path: "vmscripts/vm.setup.server.sh"
+    local.vm.provision "shell", path: "vmscripts/vm.setup.server.sh", privileged: false
     # Non-priviledged user, installs node packages.
+    local.vm.provision "shell", path: "vmscripts/vm.setup.node.sh", privileged: false
     local.vm.provision "shell", path: "vmscripts/vm.setup.mean-stack.sh", privileged: false
     # Setup StrongLoop backend
     local.vm.provision "shell", path: "vmscripts/vm.setup.strongloop.sh", privileged: false
