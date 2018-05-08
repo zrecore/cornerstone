@@ -9,9 +9,9 @@ cd src/app/
 rm -fR config
 mkdir config
 cd config/
-cp ~/app/cornerstone-backend/setup/sample.frontend.config.json ./frontend.config.json
-sed -i "s@CORNERSTONE_WEBSITE_URL@$CORNERSTONE_WEBSITE_URL@g" ./frontend.config.json
-sed -i "s@CORNERSTONE_WEBSITE_NAME@$CORNERSTONE_WEBSITE_NAME@g" ./frontend.config.json
+cp ~/app/cornerstone-backend/setup/sample.frontend.config.ts ./frontend.config.ts
+sed -i "s@CORNERSTONE_WEBSITE_URL@$CORNERSTONE_WEBSITE_URL@g" ./frontend.config.ts
+sed -i "s@CORNERSTONE_WEBSITE_NAME@$CORNERSTONE_WEBSITE_NAME@g" ./frontend.config.ts
 
 # cd ~/app/cornerstone-ui
 # npm run ssr-build
