@@ -12,7 +12,7 @@ sed -i "s@CORNERSTONE_EMAIL@$CORNERSTONE_EMAIL@g" ~/app/cornerstone-backend/serv
 sed -i "s@CORNERSTONE_TIMEZONE@$CORNERSTONE_TIMEZONE@g" ~/app/cornerstone-backend/server/backend.config.json
 
 cp ~/app/cornerstone-backend/setup/sample.datasources.json ~/app/cornerstone-backend/server/datasources.json
-sed -i "s@CORNERSTONE_EMAIL_PASSWORD@$CORNERSTONE_EMAIL_PASSWORD@g" ~/app/cornerstone-backend/server/datasources.json
+sed -i "s@CORNERSTONE_EMAIL@$CORNERSTONE_EMAIL@g" ~/app/cornerstone-backend/server/datasources.json
 sed -i "s@CORNERSTONE_EMAIL_PASSWORD@$CORNERSTONE_EMAIL_PASSWORD@g" ~/app/cornerstone-backend/server/datasources.json
 
 source ~/app/cornerstone-backend/setup/deconfig.sh
