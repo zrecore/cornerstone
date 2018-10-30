@@ -73,7 +73,7 @@ Then change directories to `/home/ubuntu/app/cornerstone-ui` and run:
 npm start
 ```
 
-The front-end is now available at [cornerstone.test:4000](cornerstone.test:4200)
+The front-end is now available at [cornerstone.test:4200](cornerstone.test:4200)
 
 
 ### Run the front-end (production)
