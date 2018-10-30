@@ -31,7 +31,7 @@ Please install the following vagrant plug-ins:
 
 Before provisioning this Vagrant box
 
-This Vagrant box runs on your machine at [192.168.33.11](192.168.33.11)
+This Vagrant box runs on your machine at [192.168.33.10](192.168.33.10)
 
 Append an entry to your `/etc/hosts` file to give it a local domain name:
 
