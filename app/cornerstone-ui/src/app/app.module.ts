@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserCookiesModule } from '@ngx-utils/cookies/browser';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { environment } from '../environments/environment';
 
@@ -56,7 +56,7 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot(appRoutes,
     BrowserCookiesModule.forRoot(),
     rootRouting,
     FormsModule,
-    HttpModule
+    HttpClientModule
     
   ],
   bootstrap: [AppComponent]

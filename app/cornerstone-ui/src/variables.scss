@@ -4,13 +4,48 @@
 $font-palanquin: 'Palanquin', sans-serif;
 $font-raleway: 'Raleway', sans-serif;
 $font-roboto: 'Roboto', sans-serif;
+$font-noto-serif: 'Noto Serif', serif;
 
-$body-font: $font-raleway;
-$header-font: $font-palanquin;
+$body-font: $font-noto-serif;
+$header-font: $font-noto-serif;
 
+$color-1: #ffffff;
+$color-2: #cccccc;
+$color-3: #aaaaaa;
+$color-4: #888888;
+$color-5: #444444;
 
 /** Your Stuff BOF **/
+$header-height: 5;
+$footer-height: 8;
+$main-container-height: calc(100% - #{$header-height + $footer-height}rem);
 
+
+// Customize the theme colors
+$primary:       $color-2;
+$secondary:     $color-3;
+$success:       $color-3;
+$info:          $color-2;
+$warning:       $color-4;
+$danger:        $color-5;
+$light:         $white;
+$dark:          $color-5;
+
+$theme-colors: ();
+// stylelint-disable-next-line scss/dollar-variable-default
+$theme-colors: map-merge(
+  (
+    "primary":    $primary,
+    "secondary":  $secondary,
+    "success":    $success,
+    "info":       $info,
+    "warning":    $warning,
+    "danger":     $danger,
+    "light":      $light,
+    "dark":       $dark
+  ),
+  $theme-colors
+);
 /** Your Stuff EOF **/
 
 

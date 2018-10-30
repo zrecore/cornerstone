@@ -5,6 +5,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+package-lock.json
+
 # Runtime data
 pids
 *.pid
@@ -69,3 +71,6 @@ boxes/*
 /website/.vagrant
 /website/build
 /vagrant-spec.config.rb
+config.rb
+config.*.sh
+#app/cornerstone-ui/src/app/config/frontend.config.ts

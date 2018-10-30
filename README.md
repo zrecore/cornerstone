@@ -14,7 +14,9 @@ Build a MEAN stack web application quickly. Includes the following:
 
 ## How do I work with this?
 
-Copy `app/cornerstone-backend/setup/sample.config.sh` as `app/cornerstone-backend/setup/config.sh`, and edit the `config.sh` file with your own values.
+Copy `setup/sample.config.sh` as `setup/local.config.sh`, and edit the `local.config.sh` file with your own values. You may also create `production.config.sh` with production mode values.
+
+If you plan on deployting to Linode, copy `setup/sample.config.rb` to `setup/config.rb` and edit the values.
 
 ### Run this Vagrant provision
 
@@ -23,22 +25,20 @@ You will need to install Virtualbox and Vagrant on your machine.
 Please install the following vagrant plug-ins:
 
  * vagrant-fsnotify - forwards file system change events to the VM.
- * vagrant-linode - for Linode deployment (See Vagrantfile!)
+ * vagrant-linode - for Linode deployment.
  * vagrant-vbguest - Keeps the VM guest additions up to date on your VM boxes.
 
 Before provisioning this Vagrant box
-
-**EDIT THE DEFAULT MONGODB USER AND PASSWORD in `app/cornerstone-backend/setup/config.sh`**
 
 This Vagrant box runs on your machine at [192.168.33.10](192.168.33.10)
 
 Append an entry to your `/etc/hosts` file to give it a local domain name:
 
 ```
-192.168.33.11    local.cornerstone.com
+192.168.33.11    cornerstone.test
 ```
 
-Change `local.cornerstone.com` to whatever URL you want locally.
+Change `cornerstone.test` to whatever URL you want locally.
 
 Now, open up a shell, navigate to the `cornerstone/` directory, and run:
 
@@ -58,22 +58,6 @@ To start it back up, just issue the `vagrant up` command again.
 
 To see the status of your VM, issue the `vagrant status` command.
 
-### Run the back-end
-
-Open up a shell terminal, navigate to the `cornerstone/` directory, and run:
-
-```
-vagrant ssh
-```
-
-Then change directories to `/home/ubuntu/app/cornerstone-backend` and run:
-
-```
-node .
-```
-
-The back-end server is now available at [local.cornerstone.com:3000](local.cornerstone.com:3000)
-
 ### Run the front-end
 
 Open up another shell terminal, navigate to the `cornerstone/` directory, and run:
@@ -88,10 +72,23 @@ Then change directories to `/home/ubuntu/app/cornerstone-ui` and run:
 npm start
 ```
 
-The front-end is now available at [local.cornerstone.com:4000](local.cornerstone.com:4200)
+The front-end is now available at [cornerstone.test:4000](cornerstone.test:4200)
+
+
+### Run the front-end (production)
 
 To build the front-end into a distributable set of files, run the following command instead:
 
 ```
 npm build
 ```
+
+If you would like to use SSR (Server-Side Rendering), use `npm run build:ssr` to build, and `npm run serve:ssr` to serve. See `setup/sample.start.sh` to see a sample shell script you can have run on boot to always have SSR served.
+
+To add a cron job at boot, run `crontab -e`, add the following
+
+```
+@reboot /usr/bin/screen -d -m /home/ubuntu/app/cornerstone-ui/start.sh
+```
+
+Replace `ubuntu` with the system user's home directory if it's not `ubuntu`.

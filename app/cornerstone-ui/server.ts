@@ -9,8 +9,18 @@ import { readFileSync } from 'fs';
 import { join } from 'path';
 import { environment } from './src/environments/environment';
 
+import { provideModuleMap } from '@nguniversal/module-map-ngfactory-loader';
+
 import { HttpModule } from '@angular/http';
 
+import * as bodyParser from 'body-parser';
+import * as multer from 'multer';
+import * as nodemailer from 'nodemailer';
+
+import { check } from 'express-validator/check';
+import { sanitizeBody } from 'express-validator/filter';
+
+let upload = multer();
 
 // import { RequestService } from './src/app/service/request.service';
 // import { ResponseService } from './src/app/service/response.service';
@@ -18,30 +28,30 @@ import { HttpModule } from '@angular/http';
 enableProdMode();
 
 const app = express();
-const PORT = process.env.PORT || 4200;
+const PORT = parseInt(process.env.PORT) || 4200;
 const DIST_FOLDER = join(process.cwd(), 'dist');
-//  --host 0.0.0.0 --disable-host-check --ssl 1 --ssl-key \"/vagrant/app/setup/ssl/star.scener.com.key\" --ssl-cert \"/vagrant/app/setup/ssl/star.scener.com_GoDaddy/f4b7d873e8d9e500.crt\"
-const https = require('https');
+
+// const https = require('https');
 const helmet = require('helmet');
-const ssl_key = readFileSync("/vagrant/app/setup/ssl/star.scener.com.key");
-const ssl_cert = readFileSync("/vagrant/app/setup/ssl/star.scener.com_GoDaddy/f4b7d873e8d9e500.crt");
-const sslOptions = {
-    key: ssl_key,
-    cert: ssl_cert,
-};
+// const ssl_key = readFileSync("/vagrant/app/your_ssl.key");
+// const ssl_cert = readFileSync("/vagrant/app/your_ssl.crt");
+// const sslOptions = {
+//     key: ssl_key,
+//     cert: ssl_cert,
+// };
 
 const template = readFileSync(join(DIST_FOLDER, 'browser', 'index.html')).toString();
 
-const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require('./dist/server/main.bundle');
-
-const { provideModuleMap } = require('@nguniversal/module-map-ngfactory-loader');
+const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require('./dist/server/main');
 
 import { ngExpressEngine } from '@nguniversal/express-engine';
 import { Request, Response } from 'express';
-import { REQUEST, RESPONSE } from '@nguniversal/express-engine/src/tokens'
+import { REQUEST, RESPONSE } from '@nguniversal/express-engine/tokens'
 
 app.use(cookieParser());
 app.use(helmet());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.engine('html', (_, options, callback) => {
     const opts = { 
@@ -50,9 +60,6 @@ app.engine('html', (_, options, callback) => {
         extraProviders: [
             { provide: "REQUEST", useValue: REQUEST },
             { provide: "RESPONSE", useValue: RESPONSE },
-            // { provide: "Request", useValue: Request },
-            // { provide: "Response", useValue: Response },
-            // { provide: "cookie", useValue: {} },
             provideModuleMap(LAZY_MODULE_MAP)
         ]
     };
@@ -66,10 +73,52 @@ app.set('views', join(DIST_FOLDER, 'browser') );
 
 app.get('*.*', express.static(join(DIST_FOLDER, 'browser')));
 
-// app.get('*', (req: Request, res: Response) => {
-//     res.render('../dist/index', {req, res});
-// });
+// Handle POST request for contact form.
+app.post('/contact-api', [
+    
+    check('email').isEmail(),
+    check('name').isLength({min: 2}),
+    sanitizeBody('name').trim().escape(),
+    sanitizeBody('message').trim().escape()
 
+    ], (req: Request, res: Response) => {
+
+    let data : any = (req.body);
+
+    console.log('E-Mail:', data.email);
+    console.log('Name:', data.name);
+    console.log('Message:', data.message);
+
+    let transporter = nodemailer.createTransport({
+        host: 'smtp.gmail.com',
+        port: 587,
+        secure: false,
+        auth: {
+            user: environment.email_user,
+            pass: environment.email_password
+        }
+    });
+
+    let mailOptions = {
+        from: '"' + environment.email_from_name + '" <' + environment.email_from_address + '>',
+        to: environment.email_address_to,
+        replyTo: data.email,
+        subject: "Contact Request",
+        text: data.message
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            res.send(error);
+            return console.log(error);
+        }
+
+        console.log('Message sent!', info);
+        res.send(info);
+    });
+});
+
+// Handle everything else.
 app.all('*', (req: Request, res: Response) => {
     res.render(
         join(DIST_FOLDER, 'browser', 'index.html'), 
@@ -78,9 +127,7 @@ app.all('*', (req: Request, res: Response) => {
             res: res, 
             providers: [ 
                 {provide: 'REQUEST', useValue: (req)}, 
-                {provide: 'RESPONSE', useValue: (res)} //,
-                // {provide: 'Request', useValue: (Request)},
-                // {provide: 'Response', useValue: (Response)}
+                {provide: 'RESPONSE', useValue: (res)}
             ]
         }
     );
@@ -90,4 +137,4 @@ app.listen(PORT, "0.0.0.0", () => {
     console.log(`listening on :${PORT}!`);
 });
 
-https.createServer(sslOptions, app).listen(8443);
+// https.createServer(sslOptions, app).listen(8443);
