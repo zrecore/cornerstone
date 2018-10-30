@@ -15,7 +15,7 @@ Vagrant.configure("2") do |config|
 
 
 
-  config.vm.define :cornerstoneapp do |t|
+  config.vm.define :cornerstoneapp, autostart: false do |t|
     t.ssh.username = LINODE_SSH_USERNAME
     t.ssh.private_key_path = LINODE_SSH_PRIVATE_KEY_PATH
 
@@ -49,7 +49,7 @@ Vagrant.configure("2") do |config|
     
   end
 
-  config.vm.define :cornerstonelocal do |local|
+  config.vm.define :cornerstonelocal, primary: true do |local|
 
     local.vm.box = "ubuntu/bionic64"
 
