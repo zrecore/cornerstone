@@ -20,11 +20,11 @@ Vagrant.configure("2") do |config|
     t.ssh.private_key_path = LINODE_SSH_PRIVATE_KEY_PATH
 
     t.vm.provider :linode do |provider, override|
-      override.vm.box = 'ubuntu/bionic64'
+      override.vm.box = 'ubuntu/xenial64'
       # override.vm.box_url = 'https://github.com/displague/vagrant-linode/raw/master/box/linode.box'
       provider.api_key = LINODE_API_KEY
 
-      provider.distribution = 'Ubuntu 18.04 LTS'
+      provider.distribution = 'Ubuntu 16.04 LTS'
       provider.datacenter = 'fremont'
       provider.plan = 'Nanode 1GB'
       provider.label = 'Cornerstone'
@@ -51,7 +51,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.define :cornerstonelocal, primary: true do |local|
 
-    local.vm.box = "ubuntu/bionic64"
+    local.vm.box = "ubuntu/xenial64"
 
     local.vm.network "forwarded_port", guest: 27017, host: 27017
     local.vm.network "forwarded_port", guest: 4200, host: 4200 # Change to port 80 on production (Front-End)
