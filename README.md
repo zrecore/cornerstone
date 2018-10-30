@@ -9,14 +9,15 @@ This is a web application starter project.
 Build a MEAN stack web application quickly. Includes the following:
 
  * Strongloop, Loopback (REST API back-end, shared data models)
- * MySQL (Database)
- * Angular5, Twitter Bootstrap (Front-end)
+ * Angular 7, Twitter Bootstrap (Front-end)
 
 ## How do I work with this?
 
 Copy `setup/sample.config.sh` as `setup/local.config.sh`, and edit the `local.config.sh` file with your own values. You may also create `production.config.sh` with production mode values.
 
 If you plan on deployting to Linode, copy `setup/sample.config.rb` to `setup/config.rb` and edit the values.
+
+You may create your own shell scripts in `vmscripts/` and have modify the `Vagrantfile` script to suit your needs.
 
 ### Run this Vagrant provision
 
@@ -30,7 +31,7 @@ Please install the following vagrant plug-ins:
 
 Before provisioning this Vagrant box
 
-This Vagrant box runs on your machine at [192.168.33.10](192.168.33.10)
+This Vagrant box runs on your machine at [192.168.33.11](192.168.33.11)
 
 Append an entry to your `/etc/hosts` file to give it a local domain name:
 
