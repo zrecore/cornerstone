@@ -83,6 +83,7 @@ Vagrant.configure("2") do |config|
     local.vm.provision "shell", path: "vmscripts/vm.setup.server.sh", privileged: false
     local.vm.provision "shell", path: "vmscripts/vm.setup.node.sh", privileged: false
     local.vm.provision "shell", path: "vmscripts/vm.setup.mean-stack.sh", privileged: false
+    local.vm.provision "shell", path: "vmscripts/vm.setup.golang.sh", privileged: false
     
   end
 end
