@@ -12,7 +12,9 @@ source "$HOME/setup/config.sh"
 
 echo "START vm.setup.vue.sh"
 
-    
+    npm install -g @vue/cli@3.6.3
+    cd "$HOME/app/cornerstone-ui/"
+
 
 echo "END vm.setup.vue.sh"
 

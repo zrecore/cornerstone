@@ -43,6 +43,7 @@ Vagrant.configure("2") do |config|
     t.vm.provision "shell", path: "vmscripts/vm.install.letsencryptssl.sh", privileged: false, env: {"ENV" => "production", "USER" => LINODE_SSH_USERNAME}
     t.vm.provision "shell", path: "vmscripts/vm.setup.node.sh", privileged: false, env: {"ENV" => "production", "USER" => LINODE_SSH_USERNAME}
     t.vm.provision "shell", path: "vmscripts/vm.setup.mean-stack.sh", privileged: false, env: {"ENV" => "production", "USER" => LINODE_SSH_USERNAME}
+    t.vm.provision "shell", path: "vmscripts/vm.setup.vue.sh", privileged: false, env: {"ENV" => "production", "USER" => LINODE_SSH_USERNAME}
     t.vm.provision "shell", path: "vmscripts/vm.setup.letsencryptssl.sh", privileged: false, env: {"ENV" => "production", "USER" => LINODE_SSH_USERNAME}
 
     t.vm.provision "shell", path: "vmscripts/vm.setup.linode.sh", privileged: false, env: {"ENV" => "production", "USER" => LINODE_SSH_USERNAME}
@@ -53,11 +54,11 @@ Vagrant.configure("2") do |config|
 
     local.vm.box = "ubuntu/xenial64"
 
-    local.vm.network "forwarded_port", guest: 27017, host: 27017
-    local.vm.network "forwarded_port", guest: 4200, host: 4200 # Change to port 80 on production (Front-End)
-    local.vm.network "forwarded_port", guest: 4000, host: 4000
+    # local.vm.network "forwarded_port", guest: 27017, host: 27017
+    local.vm.network "forwarded_port", guest: 4200, host: 8080 # Change to port 80 on production (Front-End)
+    # local.vm.network "forwarded_port", guest: 4000, host: 4000
     # config.vm.network "forwarded_port", guest: 443, host: 443 # Enable on production
-    local.vm.network "forwarded_port", guest: 49152, host: 49152
+    # local.vm.network "forwarded_port", guest: 49152, host: 49152
 
     # Create a private network, which allows host-only access to the machine
     # using a specific IP.
@@ -83,6 +84,7 @@ Vagrant.configure("2") do |config|
     local.vm.provision "shell", path: "vmscripts/vm.setup.server.sh", privileged: false
     local.vm.provision "shell", path: "vmscripts/vm.setup.node.sh", privileged: false
     local.vm.provision "shell", path: "vmscripts/vm.setup.mean-stack.sh", privileged: false
+    local.vm.provision "shell", path: "vmscripts/vm.setup.vue.sh", privileged: false
     
   end
 end

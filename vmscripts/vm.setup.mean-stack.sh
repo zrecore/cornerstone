@@ -12,7 +12,7 @@ source "$HOME/setup/config.sh"
 
 echo "START vm.setup.mean-stack.sh"
 
-npm install -g webpack webpack-dev-server karma-cli protractor rimraf eslint node-sass typescript
+npm install -g webpack webpack-dev-server rimraf eslint node-sass typescript
 # Some packages still look for the sass binary... just symlink to node-sass.
 # ln -s node-sass sass
 
