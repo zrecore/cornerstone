@@ -55,7 +55,7 @@ Vagrant.configure("2") do |config|
     local.vm.box = "ubuntu/xenial64"
 
     # local.vm.network "forwarded_port", guest: 27017, host: 27017
-    local.vm.network "forwarded_port", guest: 4200, host: 8080 # Change to port 80 on production (Front-End)
+    local.vm.network "forwarded_port", guest: 8080, host: 8080 # Change to port 80 on production (Front-End)
     # local.vm.network "forwarded_port", guest: 4000, host: 4000
     # config.vm.network "forwarded_port", guest: 443, host: 443 # Enable on production
     # local.vm.network "forwarded_port", guest: 49152, host: 49152
