@@ -10,6 +10,8 @@ npm install
 npm run serve
 ```
 
+Note: since this is inside a vagrant VM, remember to run `vagrant fsnotify cornerstonelocal` in another terminal for this project.
+
 ### Compiles and minifies for production
 ```
 npm run build
